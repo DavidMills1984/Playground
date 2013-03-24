@@ -1,0 +1,5 @@
+C:\inetpub\wwwroot\Playground\Playground.Service\bin\Debug\Playground.Service.dll
+C:\inetpub\wwwroot\Playground\Playground.Service\bin\Debug\Playground.Service.pdb
+C:\inetpub\wwwroot\Playground\Playground.Service\obj\Debug\ResolveAssemblyReference.cache
+C:\inetpub\wwwroot\Playground\Playground.Service\obj\Debug\Playground.Service.dll
+C:\inetpub\wwwroot\Playground\Playground.Service\obj\Debug\Playground.Service.pdb
