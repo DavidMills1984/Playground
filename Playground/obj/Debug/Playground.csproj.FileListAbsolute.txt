@@ -28,3 +28,11 @@ C:\inetpub\wwwroot\Playground\Playground\bin\System.Web.WebPages.Razor.xml
 C:\inetpub\wwwroot\Playground\Playground\obj\Debug\ResolveAssemblyReference.cache
 C:\inetpub\wwwroot\Playground\Playground\obj\Debug\Playground.dll
 C:\inetpub\wwwroot\Playground\Playground\obj\Debug\Playground.pdb
+C:\inetpub\wwwroot\Playground\Playground\bin\Playground.Model.dll
+C:\inetpub\wwwroot\Playground\Playground\bin\Playground.Model.pdb
+C:\inetpub\wwwroot\Playground\Playground\bin\Ninject.dll
+C:\inetpub\wwwroot\Playground\Playground\bin\Ninject.pdb
+C:\inetpub\wwwroot\Playground\Playground\bin\Ninject.xml
+C:\inetpub\wwwroot\Playground\Playground\bin\Playground.sdf
+C:\inetpub\wwwroot\Playground\Playground\bin\Playground.Data.dll
+C:\inetpub\wwwroot\Playground\Playground\bin\Playground.Data.pdb

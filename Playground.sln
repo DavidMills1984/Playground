@@ -1,13 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Playground", "Playground\Playground.csproj", "{55C98087-8A21-4963-822E-CFB7BB5B7CEE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Playground.WebUI", "Playground\Playground.WebUI.csproj", "{55C98087-8A21-4963-822E-CFB7BB5B7CEE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Playground.Tests", "Playground.Tests\Playground.Tests.csproj", "{10C71AB7-9CBE-439D-BD9D-38AE16745AA8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Playground.Model", "Playground.Model\Playground.Model.csproj", "{ED84C4BE-C4E9-4B0F-8570-1DFE9695303A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Playground.Service", "Playground.Service\Playground.Service.csproj", "{11C9FF33-D301-4D55-89E5-002DE7DC137C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Playground.Data", "Playground.Data\Playground.Data.csproj", "{8C442F87-426A-4A8D-B3A9-CCADD26784C7}"
 EndProject
@@ -29,10 +27,6 @@ Global
 		{ED84C4BE-C4E9-4B0F-8570-1DFE9695303A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED84C4BE-C4E9-4B0F-8570-1DFE9695303A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED84C4BE-C4E9-4B0F-8570-1DFE9695303A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{11C9FF33-D301-4D55-89E5-002DE7DC137C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{11C9FF33-D301-4D55-89E5-002DE7DC137C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{11C9FF33-D301-4D55-89E5-002DE7DC137C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{11C9FF33-D301-4D55-89E5-002DE7DC137C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8C442F87-426A-4A8D-B3A9-CCADD26784C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8C442F87-426A-4A8D-B3A9-CCADD26784C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8C442F87-426A-4A8D-B3A9-CCADD26784C7}.Release|Any CPU.ActiveCfg = Release|Any CPU

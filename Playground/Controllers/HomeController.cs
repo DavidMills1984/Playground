@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Playground.WebUI.Controllers;
 
-namespace Playground.Controllers
+namespace Playground.WebUI.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         //
         // GET: /Home/
@@ -15,6 +16,5 @@ namespace Playground.Controllers
         {
             return View("Index");
         }
-
     }
 }

@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PlaygroundModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="PlaygroundModelStoreContainer">
+          <EntitySet Name="MenuItem" EntityType="PlaygroundModel.Store.MenuItem" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MenuSubItem" EntityType="PlaygroundModel.Store.MenuSubItem" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_MenuSubItem_MenuItem" Association="PlaygroundModel.Store.FK_MenuSubItem_MenuItem">
+            <End Role="MenuItem" EntitySet="MenuItem" />
+            <End Role="MenuSubItem" EntitySet="MenuSubItem" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="MenuItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="250" />
+          <Property Name="Link" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="MenuSubItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="250" />
+          <Property Name="Link" Type="nvarchar" MaxLength="250" />
+          <Property Name="ParentId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_MenuSubItem_MenuItem">
+          <End Role="MenuItem" Type="PlaygroundModel.Store.MenuItem" Multiplicity="1" />
+          <End Role="MenuSubItem" Type="PlaygroundModel.Store.MenuSubItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MenuItem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MenuSubItem">
+              <PropertyRef Name="ParentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PlaygroundModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="PlaygroundEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="MenuItems" EntityType="PlaygroundModel.MenuItem" />
+          <EntitySet Name="MenuSubItems" EntityType="PlaygroundModel.MenuSubItem" />
+          <AssociationSet Name="FK_MenuSubItem_MenuItem1" Association="PlaygroundModel.FK_MenuSubItem_MenuItem1">
+            <End Role="MenuItem" EntitySet="MenuItems" />
+            <End Role="MenuSubItem" EntitySet="MenuSubItems" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="MenuItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="Link" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="MenuSubItems" Relationship="PlaygroundModel.FK_MenuSubItem_MenuItem1" FromRole="MenuItem" ToRole="MenuSubItem" />
+        </EntityType>
+        <EntityType Name="MenuSubItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Link" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="ParentId" Nullable="false" />
+          <NavigationProperty Name="MenuItem_1" Relationship="PlaygroundModel.FK_MenuSubItem_MenuItem1" FromRole="MenuSubItem" ToRole="MenuItem" />
+        </EntityType>
+        <Association Name="FK_MenuSubItem_MenuItem1">
+          <End Type="PlaygroundModel.MenuItem" Role="MenuItem" Multiplicity="1" />
+          <End Type="PlaygroundModel.MenuSubItem" Role="MenuSubItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MenuItem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MenuSubItem">
+              <PropertyRef Name="ParentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PlaygroundModelStoreContainer" CdmEntityContainer="PlaygroundEntities">
+          <EntitySetMapping Name="MenuItems"><EntityTypeMapping TypeName="PlaygroundModel.MenuItem"><MappingFragment StoreEntitySet="MenuItem">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="Link" ColumnName="Link" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="MenuSubItems">
+            <EntityTypeMapping TypeName="PlaygroundModel.MenuSubItem">
+              <MappingFragment StoreEntitySet="MenuSubItem">
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Playground">
+        <EntityTypeShape EntityType="PlaygroundModel.MenuItem" Width="1.5" PointX="0.75" PointY="0.75" Height="1.59568359375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PlaygroundModel.MenuSubItem" Width="1.5" PointX="4" PointY="0.875" Height="2.172587890625" />
+        <AssociationConnector Association="PlaygroundModel.FK_MenuSubItem_MenuItem1" >
+          <ConnectorPoint PointX="2.25" PointY="1.2763216145833334" />
+          <ConnectorPoint PointX="4" PointY="1.2763216145833334" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

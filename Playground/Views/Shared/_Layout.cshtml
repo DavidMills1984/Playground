@@ -1,0 +1,31 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link rel="Stylesheet" href="@Href("~/Styles/Layout.css")" type="text/css"/>
+    <script src="../../Scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="../../Scripts/Site/UI.js" type="text/javascript"></script>
+    <meta name="viewport" content="width=device-width" />
+    <title>Playground</title>
+</head>
+<body>
+    <div id="site-wrapper">
+
+        @*Render Header*@
+        @{ Html.RenderAction("Header", "Header"); }
+
+        @*Render Navigation Menu*@
+        @{ Html.RenderAction("Menu", "Nav"); }
+
+        <div id="content">
+            @*Render Navigation Body*@
+            @RenderBody()
+        </div>
+
+    </div>
+</body>
+</html>

@@ -2,8 +2,10 @@ C:\inetpub\wwwroot\Playground\Playground.Tests\bin\Debug\Playground.Tests.dll.co
 C:\inetpub\wwwroot\Playground\Playground.Tests\bin\Debug\Playground.Tests.dll
 C:\inetpub\wwwroot\Playground\Playground.Tests\bin\Debug\Playground.Tests.pdb
 C:\inetpub\wwwroot\Playground\Playground.Tests\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\inetpub\wwwroot\Playground\Playground.Tests\bin\Debug\Moq.dll
 C:\inetpub\wwwroot\Playground\Playground.Tests\bin\Debug\Newtonsoft.Json.dll
-C:\inetpub\wwwroot\Playground\Playground.Tests\bin\Debug\Playground.dll
+C:\inetpub\wwwroot\Playground\Playground.Tests\bin\Debug\Playground.Data.dll
+C:\inetpub\wwwroot\Playground\Playground.Tests\bin\Debug\Playground.Model.dll
 C:\inetpub\wwwroot\Playground\Playground.Tests\bin\Debug\System.Net.Http.dll
 C:\inetpub\wwwroot\Playground\Playground.Tests\bin\Debug\System.Net.Http.Formatting.dll
 C:\inetpub\wwwroot\Playground\Playground.Tests\bin\Debug\System.Net.Http.WebRequest.dll
@@ -15,7 +17,10 @@ C:\inetpub\wwwroot\Playground\Playground.Tests\bin\Debug\System.Web.Razor.dll
 C:\inetpub\wwwroot\Playground\Playground.Tests\bin\Debug\System.Web.WebPages.Deployment.dll
 C:\inetpub\wwwroot\Playground\Playground.Tests\bin\Debug\System.Web.WebPages.dll
 C:\inetpub\wwwroot\Playground\Playground.Tests\bin\Debug\System.Web.WebPages.Razor.dll
-C:\inetpub\wwwroot\Playground\Playground.Tests\bin\Debug\Playground.pdb
+C:\inetpub\wwwroot\Playground\Playground.Tests\bin\Debug\Playground.Data.pdb
+C:\inetpub\wwwroot\Playground\Playground.Tests\bin\Debug\Playground.Model.pdb
+C:\inetpub\wwwroot\Playground\Playground.Tests\bin\Debug\Moq.pdb
+C:\inetpub\wwwroot\Playground\Playground.Tests\bin\Debug\Moq.xml
 C:\inetpub\wwwroot\Playground\Playground.Tests\bin\Debug\Newtonsoft.Json.xml
 C:\inetpub\wwwroot\Playground\Playground.Tests\bin\Debug\System.Net.Http.xml
 C:\inetpub\wwwroot\Playground\Playground.Tests\bin\Debug\System.Net.Http.Formatting.xml
@@ -31,3 +36,5 @@ C:\inetpub\wwwroot\Playground\Playground.Tests\bin\Debug\System.Web.WebPages.Raz
 C:\inetpub\wwwroot\Playground\Playground.Tests\obj\Debug\ResolveAssemblyReference.cache
 C:\inetpub\wwwroot\Playground\Playground.Tests\obj\Debug\Playground.Tests.dll
 C:\inetpub\wwwroot\Playground\Playground.Tests\obj\Debug\Playground.Tests.pdb
+C:\inetpub\wwwroot\Playground\Playground.Tests\bin\Debug\Playground.WebUI.dll
+C:\inetpub\wwwroot\Playground\Playground.Tests\bin\Debug\Playground.WebUI.pdb

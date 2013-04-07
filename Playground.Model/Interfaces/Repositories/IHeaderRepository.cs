@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Playground.Data
+namespace Playground.Model.Interfaces
 {
-    public class Class1
+    public interface IHeaderRepository
     {
     }
 }

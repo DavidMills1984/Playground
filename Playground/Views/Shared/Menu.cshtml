@@ -1,0 +1,25 @@
+﻿@model Playground.WebUI.Models.Concrete.MenuViewModel
+
+<div id="menu">
+    <div id="menu-wrapper">
+        @foreach (Playground.Model.Interfaces.IMenuItem menuItem in Model.MenuItems)
+        {
+            <div class="menu-item-wrapper">
+                <div class="menu-item">
+                    <a class="menu-item-anchor" href="@menuItem.Reference">@menuItem.Title</a>
+                </div>
+                @if (menuItem.SubItems.Count > 0)
+                {
+                    <div class="menu-subitem-wrapper">
+                        @foreach (Playground.Model.Interfaces.IMenuItem subMenuItem in menuItem.SubItems)
+                        {
+                            <div class="menu-subitem">
+                                <a class="menu-subitem-anchor" href="@subMenuItem.Reference">@subMenuItem.Title</a>
+                            </div>
+                        }
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</div>
