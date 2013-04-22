@@ -19,6 +19,7 @@ using System.Runtime.Serialization;
 #region EDM Relationship Metadata
 
 [assembly: EdmRelationshipAttribute("PlaygroundModel", "FK_MenuSubItem_MenuItem1", "MenuItem", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Playground.Data.EntityModels.MenuItem), "MenuSubItem", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Playground.Data.EntityModels.MenuSubItem), true)]
+[assembly: EdmRelationshipAttribute("PlaygroundModel", "FK_MenuItem_MenuGroups", "MenuGroup", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Playground.Data.EntityModels.MenuGroup), "MenuItem", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Playground.Data.EntityModels.MenuItem), true)]
 
 #endregion
 
@@ -101,6 +102,22 @@ namespace Playground.Data.EntityModels
             }
         }
         private ObjectSet<MenuSubItem> _MenuSubItems;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<MenuGroup> MenuGroups
+        {
+            get
+            {
+                if ((_MenuGroups == null))
+                {
+                    _MenuGroups = base.CreateObjectSet<MenuGroup>("MenuGroups");
+                }
+                return _MenuGroups;
+            }
+        }
+        private ObjectSet<MenuGroup> _MenuGroups;
 
         #endregion
         #region AddTo Methods
@@ -120,6 +137,14 @@ namespace Playground.Data.EntityModels
         {
             base.AddObject("MenuSubItems", menuSubItem);
         }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the MenuGroups EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToMenuGroups(MenuGroup menuGroup)
+        {
+            base.AddObject("MenuGroups", menuGroup);
+        }
 
         #endregion
     }
@@ -128,6 +153,136 @@ namespace Playground.Data.EntityModels
     #endregion
     
     #region Entities
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="PlaygroundModel", Name="MenuGroup")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class MenuGroup : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new MenuGroup object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="groupName">Initial value of the GroupName property.</param>
+        public static MenuGroup CreateMenuGroup(global::System.Int32 id, global::System.String groupName)
+        {
+            MenuGroup menuGroup = new MenuGroup();
+            menuGroup.Id = id;
+            menuGroup.GroupName = groupName;
+            return menuGroup;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String GroupName
+        {
+            get
+            {
+                return _GroupName;
+            }
+            set
+            {
+                OnGroupNameChanging(value);
+                ReportPropertyChanging("GroupName");
+                _GroupName = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("GroupName");
+                OnGroupNameChanged();
+            }
+        }
+        private global::System.String _GroupName;
+        partial void OnGroupNameChanging(global::System.String value);
+        partial void OnGroupNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ControllerName
+        {
+            get
+            {
+                return _ControllerName;
+            }
+            set
+            {
+                OnControllerNameChanging(value);
+                ReportPropertyChanging("ControllerName");
+                _ControllerName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ControllerName");
+                OnControllerNameChanged();
+            }
+        }
+        private global::System.String _ControllerName;
+        partial void OnControllerNameChanging(global::System.String value);
+        partial void OnControllerNameChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("PlaygroundModel", "FK_MenuItem_MenuGroups", "MenuItem")]
+        public EntityCollection<MenuItem> MenuItems
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<MenuItem>("PlaygroundModel.FK_MenuItem_MenuGroups", "MenuItem");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<MenuItem>("PlaygroundModel.FK_MenuItem_MenuGroups", "MenuItem", value);
+                }
+            }
+        }
+
+        #endregion
+    }
     
     /// <summary>
     /// No Metadata Documentation available.
@@ -229,6 +384,30 @@ namespace Playground.Data.EntityModels
         private global::System.String _Link;
         partial void OnLinkChanging(global::System.String value);
         partial void OnLinkChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> MenuGroup
+        {
+            get
+            {
+                return _MenuGroup;
+            }
+            set
+            {
+                OnMenuGroupChanging(value);
+                ReportPropertyChanging("MenuGroup");
+                _MenuGroup = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("MenuGroup");
+                OnMenuGroupChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _MenuGroup;
+        partial void OnMenuGroupChanging(Nullable<global::System.Int32> value);
+        partial void OnMenuGroupChanged();
 
         #endregion
     
@@ -252,6 +431,44 @@ namespace Playground.Data.EntityModels
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<MenuSubItem>("PlaygroundModel.FK_MenuSubItem_MenuItem1", "MenuSubItem", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("PlaygroundModel", "FK_MenuItem_MenuGroups", "MenuGroup")]
+        public MenuGroup ItemMenuGroup
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<MenuGroup>("PlaygroundModel.FK_MenuItem_MenuGroups", "MenuGroup").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<MenuGroup>("PlaygroundModel.FK_MenuItem_MenuGroups", "MenuGroup").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<MenuGroup> ItemMenuGroupReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<MenuGroup>("PlaygroundModel.FK_MenuItem_MenuGroups", "MenuGroup");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<MenuGroup>("PlaygroundModel.FK_MenuItem_MenuGroups", "MenuGroup", value);
                 }
             }
         }
@@ -397,7 +614,7 @@ namespace Playground.Data.EntityModels
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("PlaygroundModel", "FK_MenuSubItem_MenuItem1", "MenuItem")]
-        public MenuItem MenuItem_1
+        public MenuItem MenuItem
         {
             get
             {
@@ -413,7 +630,7 @@ namespace Playground.Data.EntityModels
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<MenuItem> MenuItem_1Reference
+        public EntityReference<MenuItem> MenuItemReference
         {
             get
             {

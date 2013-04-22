@@ -11,16 +11,17 @@ namespace Playground.Data.Concrete
     {
         public List<IMenuItem> Items { get; set; }
 
-        public Menu()
+        public Menu(string menuGroup)
         {
             this.Items = new List<IMenuItem>();
 
             using (PlaygroundEntities db = new PlaygroundEntities())
             {
-                var entityItems = db.MenuItems.ToList();
+                var entityItems = db.MenuItems.Where(x => x.ItemMenuGroup.GroupName == menuGroup).ToList();
 
                 entityItems.ForEach(x => this.Items.Add(new MenuItem() { 
-                    Reference = x.Link, 
+                    Action = x.Link,
+                    Controller = x.ItemMenuGroup.ControllerName,
                     Title = x.Name, 
                     SubItems = GetSubItems(x.Id) 
                 }));
@@ -38,7 +39,8 @@ namespace Playground.Data.Concrete
 
                 entityItems.ForEach(x => returnList.Add(new MenuItem()
                 {
-                    Reference = x.Link,
+                    Action = x.Link,
+                    Controller = x.MenuItem.ItemMenuGroup.ControllerName,
                     Title = x.Name
                 }));
             }

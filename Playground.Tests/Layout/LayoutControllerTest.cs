@@ -70,11 +70,11 @@ namespace Playground.Tests
             Mock<IMenuItem> mockedSubMenuItem = new Mock<IMenuItem>();
 
             //Setup mock sub menu item
-            mockedSubMenuItem.Setup(m => m.Reference).Returns("TestSubRef");
+            mockedSubMenuItem.Setup(m => m.Action).Returns("TestSubRef");
             mockedSubMenuItem.Setup(m => m.Title).Returns("TestSubTitle");
 
             //Setup mock menu item
-            mockedMenuItem.Setup(m => m.Reference).Returns("TestRef");
+            mockedMenuItem.Setup(m => m.Action).Returns("TestRef");
             mockedMenuItem.Setup(m => m.Title).Returns("TestTitle");
             mockedMenuItem.Setup(m => m.SubItems).Returns(new List<IMenuItem>() {
                     mockedSubMenuItem.Object
@@ -85,7 +85,7 @@ namespace Playground.Tests
                     mockedMenuItem.Object
                 });
 
-            mockedRepository.Setup(m => m.Menu).Returns(mockedMenu.Object);
+            mockedRepository.Setup(m => m.UserSideMenu).Returns(mockedMenu.Object);
 
             //Use mock menu to populate new Layout model
 
@@ -116,7 +116,7 @@ namespace Playground.Tests
             //Act
             NavController mockController = new NavController(repository);
 
-            List<IMenuItem> result = (List<IMenuItem>)mockController.Menu().Model;
+            List<IMenuItem> result = (List<IMenuItem>)mockController.Home().Model;
 
             //Assert
 
@@ -125,7 +125,7 @@ namespace Playground.Tests
             IMenuItem menuItem = result.First();
 
             //Is it the correct menu item?
-            Assert.AreEqual(menuItem.Reference, "TestRef");
+            Assert.AreEqual(menuItem.Action, "TestRef");
             Assert.AreEqual(menuItem.Title, "TestTitle");
 
             //Do we have a sub item?
@@ -134,7 +134,7 @@ namespace Playground.Tests
 
             //Is it the correct menu item?
 
-            Assert.AreEqual(subMenuItem.Reference, "TestSubRef");
+            Assert.AreEqual(subMenuItem.Action, "TestSubRef");
             Assert.AreEqual(subMenuItem.Title, "TestSubTitle");
 
         }

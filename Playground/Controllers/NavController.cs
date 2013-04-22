@@ -16,11 +16,19 @@ namespace Playground.WebUI.Controllers
         {
             repository = repo;
         }
-        public PartialViewResult Menu()
-        {
-            MenuViewModel menuItems = new MenuViewModel(repository.Menu);
 
-            return PartialView(menuItems);
+        public PartialViewResult Home()
+        {
+            MenuViewModel menuItems = new MenuViewModel(repository.UserSideMenu);
+
+            return PartialView("Menu", menuItems);
+        }
+
+        public PartialViewResult Admin()
+        {
+            MenuViewModel menuItems = new MenuViewModel(repository.AdminSideMenu);
+
+            return PartialView("Menu", menuItems);
         }
     }
 }

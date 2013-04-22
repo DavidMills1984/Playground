@@ -6,13 +6,26 @@
     <edmx:StorageModels>
     <Schema Namespace="PlaygroundModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="PlaygroundModelStoreContainer">
+          <EntitySet Name="MenuGroups" EntityType="PlaygroundModel.Store.MenuGroups" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MenuItem" EntityType="PlaygroundModel.Store.MenuItem" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MenuSubItem" EntityType="PlaygroundModel.Store.MenuSubItem" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_MenuItem_MenuGroups" Association="PlaygroundModel.Store.FK_MenuItem_MenuGroups">
+            <End Role="MenuGroups" EntitySet="MenuGroups" />
+            <End Role="MenuItem" EntitySet="MenuItem" />
+          </AssociationSet>
           <AssociationSet Name="FK_MenuSubItem_MenuItem" Association="PlaygroundModel.Store.FK_MenuSubItem_MenuItem">
             <End Role="MenuItem" EntitySet="MenuItem" />
             <End Role="MenuSubItem" EntitySet="MenuSubItem" />
           </AssociationSet>
         </EntityContainer>
+        <EntityType Name="MenuGroups">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="GroupName" Type="nvarchar" Nullable="false" MaxLength="250" />
+          <Property Name="ControllerName" Type="nvarchar" MaxLength="250" />
+        </EntityType>
         <EntityType Name="MenuItem">
           <Key>
             <PropertyRef Name="Id" />
@@ -20,6 +33,7 @@
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="250" />
           <Property Name="Link" Type="nvarchar" MaxLength="250" />
+          <Property Name="MenuGroup" Type="int" />
         </EntityType>
         <EntityType Name="MenuSubItem">
           <Key>
@@ -30,6 +44,18 @@
           <Property Name="Link" Type="nvarchar" MaxLength="250" />
           <Property Name="ParentId" Type="int" Nullable="false" />
         </EntityType>
+        <Association Name="FK_MenuItem_MenuGroups">
+          <End Role="MenuGroups" Type="PlaygroundModel.Store.MenuGroups" Multiplicity="0..1" />
+          <End Role="MenuItem" Type="PlaygroundModel.Store.MenuItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MenuGroups">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MenuItem">
+              <PropertyRef Name="MenuGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_MenuSubItem_MenuItem">
           <End Role="MenuItem" Type="PlaygroundModel.Store.MenuItem" Multiplicity="1" />
           <End Role="MenuSubItem" Type="PlaygroundModel.Store.MenuSubItem" Multiplicity="*" />
@@ -53,6 +79,11 @@
             <End Role="MenuItem" EntitySet="MenuItems" />
             <End Role="MenuSubItem" EntitySet="MenuSubItems" />
           </AssociationSet>
+          <EntitySet Name="MenuGroups" EntityType="PlaygroundModel.MenuGroup" />
+          <AssociationSet Name="FK_MenuItem_MenuGroups" Association="PlaygroundModel.FK_MenuItem_MenuGroups">
+            <End Role="MenuGroup" EntitySet="MenuGroups" />
+            <End Role="MenuItem" EntitySet="MenuItems" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="MenuItem">
           <Key>
@@ -62,6 +93,8 @@
           <Property Name="Name" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
           <Property Name="Link" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="MenuSubItems" Relationship="PlaygroundModel.FK_MenuSubItem_MenuItem1" FromRole="MenuItem" ToRole="MenuSubItem" />
+          <Property Type="Int32" Name="MenuGroup" />
+          <NavigationProperty Name="ItemMenuGroup" Relationship="PlaygroundModel.FK_MenuItem_MenuGroups" FromRole="MenuItem" ToRole="MenuGroup" />
         </EntityType>
         <EntityType Name="MenuSubItem">
           <Key>
@@ -71,7 +104,7 @@
           <Property Type="String" Name="Name" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Link" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Type="Int32" Name="ParentId" Nullable="false" />
-          <NavigationProperty Name="MenuItem_1" Relationship="PlaygroundModel.FK_MenuSubItem_MenuItem1" FromRole="MenuSubItem" ToRole="MenuItem" />
+          <NavigationProperty Name="MenuItem" Relationship="PlaygroundModel.FK_MenuSubItem_MenuItem1" FromRole="MenuSubItem" ToRole="MenuItem" />
         </EntityType>
         <Association Name="FK_MenuSubItem_MenuItem1">
           <End Type="PlaygroundModel.MenuItem" Role="MenuItem" Multiplicity="1" />
@@ -85,6 +118,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="MenuGroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="GroupName" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MenuItems" Relationship="PlaygroundModel.FK_MenuItem_MenuGroups" FromRole="MenuGroup" ToRole="MenuItem" />
+          <Property Type="String" Name="ControllerName" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_MenuItem_MenuGroups">
+          <End Type="PlaygroundModel.MenuGroup" Role="MenuGroup" Multiplicity="0..1" />
+          <End Type="PlaygroundModel.MenuItem" Role="MenuItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MenuGroup">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MenuItem">
+              <PropertyRef Name="MenuGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -92,6 +146,7 @@
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="PlaygroundModelStoreContainer" CdmEntityContainer="PlaygroundEntities">
           <EntitySetMapping Name="MenuItems"><EntityTypeMapping TypeName="PlaygroundModel.MenuItem"><MappingFragment StoreEntitySet="MenuItem">
+                <ScalarProperty Name="MenuGroup" ColumnName="MenuGroup" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
             <ScalarProperty Name="Name" ColumnName="Name" />
             <ScalarProperty Name="Link" ColumnName="Link" />
@@ -102,6 +157,15 @@
                 <ScalarProperty Name="ParentId" ColumnName="ParentId" />
                 <ScalarProperty Name="Link" ColumnName="Link" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MenuGroups">
+            <EntityTypeMapping TypeName="PlaygroundModel.MenuGroup">
+              <MappingFragment StoreEntitySet="MenuGroups">
+                <ScalarProperty Name="ControllerName" ColumnName="ControllerName" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -130,8 +194,13 @@
         <EntityTypeShape EntityType="PlaygroundModel.MenuItem" Width="1.5" PointX="0.75" PointY="0.75" Height="1.59568359375" IsExpanded="true" />
         <EntityTypeShape EntityType="PlaygroundModel.MenuSubItem" Width="1.5" PointX="4" PointY="0.875" Height="2.172587890625" />
         <AssociationConnector Association="PlaygroundModel.FK_MenuSubItem_MenuItem1" >
-          <ConnectorPoint PointX="2.25" PointY="1.2763216145833334" />
-          <ConnectorPoint PointX="4" PointY="1.2763216145833334" />
+          <ConnectorPoint PointX="2.25" PointY="1.8651432291666672" />
+          <ConnectorPoint PointX="4" PointY="1.8651432291666672" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="PlaygroundModel.MenuGroup" Width="1.5" PointX="0.75" PointY="4" Height="1.5956835937499996" />
+        <AssociationConnector Association="PlaygroundModel.FK_MenuItem_MenuGroups" >
+          <ConnectorPoint PointX="1.5" PointY="4" />
+          <ConnectorPoint PointX="1.5" PointY="2.922587890625" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

@@ -8,11 +8,13 @@ namespace Playground.Data.Concrete
 {
     public class LayoutRepository : ILayoutRepository
     {
-        public IMenu Menu { get; set; }
+        public IMenu UserSideMenu { get; set; }
+        public IMenu AdminSideMenu { get; set; }
 
         public LayoutRepository()
         {
-            this.Menu = new Menu();
+            this.UserSideMenu = new Menu("UserSideMenu");
+            this.AdminSideMenu = new Menu("AdminSideMenu");
 
         }
 

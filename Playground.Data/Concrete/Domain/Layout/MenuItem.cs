@@ -8,7 +8,8 @@ namespace Playground.Data.Concrete
 {
     public class MenuItem : IMenuItem
     {
-        public string Reference { get; set; }
+        public string Action { get; set; }
+        public string Controller { get; set; }
         public string Title { get; set; }
         public List<IMenuItem> SubItems { get; set; }
     }

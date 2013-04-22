@@ -7,6 +7,7 @@ namespace Playground.Model.Interfaces
 {
     public interface ILayoutRepository
     {
-        IMenu Menu { get; }
+        IMenu UserSideMenu { get; }
+        IMenu AdminSideMenu { get; }
     }
 }
