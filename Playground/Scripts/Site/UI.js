@@ -20,4 +20,19 @@
     }
     );
 
+    $(".tooltip").hover(function () {
+        var tooltipText = $(this).attr("tooltip-text");
+        $(this).parent().append("<div style='opacity:0;' class='tooltip-wrapper'><div class='tooltip-inner'><p>" + tooltipText + "</p></div></div>");
+        $(this).siblings(".tooltip-wrapper").animate({ "opacity": "1" }, "slow");
+    },
+    function () {
+        $(this).siblings(".tooltip-wrapper").animate({
+            opacity: '0'}, {
+            duration: "slow",
+            complete: function () {
+                $(this).remove(); 
+            }
+        })
+    }
+    );
 });
