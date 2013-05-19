@@ -167,4 +167,22 @@ p
 
 /* END Tooltip stlyes */
 
+/* BEGIN hero scroller styles */
+
+
+#hero-image
+{
+    background-image: url('/Images/HeroScroller/hero-image-1.png');
+}
+
+.hs-img
+{
+    height: 180px;
+    width: 800px;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+}
+
+/* END hero scroller styles */
+
 /* END site styles */
