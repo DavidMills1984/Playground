@@ -42,12 +42,51 @@
 
     $(".hs-img").HeroSwitching();
 
+    $(".gallery-image").ImageResizer();
+
 });
+
+$.fn.ImageResizer = function () {
+
+    var small = "10%"
+    var normal = "20%";
+    var big = "40%";
+    var speed = "slow";
+
+    resizeImage($(this), normal, "0.1");
+
+    $(this).hover(function () {
+        resizeImage($(this), big, speed);
+        $(this).siblings().each(function () {
+            resizeImage($(this), small, speed);
+        });
+    },
+    function () {
+        resizeImage($(this), normal, speed);
+        $(this).siblings().each(function () {
+            resizeImage($(this), normal, speed);
+        });
+    });
+
+}
 
 $.fn.HeroSwitching = function () {
 
     var imageAmount = $(this).attr("hs-img-amt");
     HeroSwitch($(this), 1, imageAmount);
+}
+
+function resizeImage($image, size, speed) {
+
+    $image.animate(
+        {
+            width: size,
+            height: size
+        },
+        {
+            duration: speed
+        })
+
 }
 
 function HeroSwitch($image, currentImage, imageAmount) {

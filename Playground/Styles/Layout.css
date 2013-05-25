@@ -185,4 +185,14 @@ p
 
 /* END hero scroller styles */
 
+/*BEGIN image gallery style */
+
+.image-gallery-wrapper
+{
+    margin:20px;
+    width: 775px;
+}
+
+/*END image gallery styles */
+
 /* END site styles */

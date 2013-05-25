@@ -16,5 +16,10 @@ namespace Playground.WebUI.Controllers
         {
             return View("Index");
         }
+
+        public ActionResult Gallery()
+        {
+            return View("Gallery");
+        }
     }
 }
