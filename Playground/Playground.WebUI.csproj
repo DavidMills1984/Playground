@@ -115,11 +115,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Infrastructure\Extensions\PlaygroundUrlHelper.cs" />
-    <Compile Include="Infrastructure\NinjectControllerFactory.cs" />
-    <Compile Include="Models\Concrete\Shared\HeaderViewModel.cs" />
-    <Compile Include="Models\Concrete\Shared\MenuViewModel.cs" />
-    <Compile Include="Models\Interfaces\Shared\ILayoutModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -132,6 +127,7 @@
     <Content Include="Scripts\jquery-1.9.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\jquery.hoverIntent.minified.js" />
     <Content Include="Scripts\Site\UI.js" />
     <Content Include="Styles\Layout.css" />
     <Content Include="Web.config" />
@@ -145,18 +141,23 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Playground.Data\Playground.Data.csproj">
-      <Project>{8C442F87-426A-4A8D-B3A9-CCADD26784C7}</Project>
-      <Name>Playground.Data</Name>
+    <ProjectReference Include="..\Playground.Infrastructure\Playground.Infrastructure.csproj">
+      <Project>{FF89DB6D-C015-4C05-9C79-8FA897E4711D}</Project>
+      <Name>Playground.Infrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\Playground.Model\Playground.Model.csproj">
       <Project>{ED84C4BE-C4E9-4B0F-8570-1DFE9695303A}</Project>
       <Name>Playground.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Playground.Service\Playground.Service.csproj">
+      <Project>{11C9FF33-D301-4D55-89E5-002DE7DC137C}</Project>
+      <Name>Playground.Service</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

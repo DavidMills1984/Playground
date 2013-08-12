@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
 
-    $(".menu-item-wrapper").hover(function () {
+    $(".menu-item-wrapper").hoverIntent(function () {
         $item = $(this).find(">:first");
         $item.animate({ "margin-left": "25px" }, "slow");
         $item.siblings().slideToggle('slow');
@@ -12,7 +12,7 @@
     }
     );
 
-    $(".menu-item, .menu-subitem").hover(function () {
+    $(".menu-item, .menu-subitem").hoverIntent(function () {
         $(this).css("font-weight", "bold");
     },
     function () {
@@ -55,7 +55,7 @@ $.fn.ImageResizer = function () {
 
     resizeImage($(this), normal, "0.1");
 
-    $(this).hover(function () {
+    $(this).hoverIntent(function () {
         resizeImage($(this), big, speed);
         $(this).siblings().each(function () {
             resizeImage($(this), small, speed);

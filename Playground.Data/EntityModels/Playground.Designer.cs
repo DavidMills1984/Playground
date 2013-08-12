@@ -18,8 +18,8 @@ using System.Runtime.Serialization;
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
 
-[assembly: EdmRelationshipAttribute("PlaygroundModel", "FK_MenuSubItem_MenuItem1", "MenuItem", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Playground.Data.EntityModels.MenuItem), "MenuSubItem", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Playground.Data.EntityModels.MenuSubItem), true)]
-[assembly: EdmRelationshipAttribute("PlaygroundModel", "FK_MenuItem_MenuGroups", "MenuGroup", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Playground.Data.EntityModels.MenuGroup), "MenuItem", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Playground.Data.EntityModels.MenuItem), true)]
+[assembly: EdmRelationshipAttribute("PlaygroundModel", "FK_MenuSubItem_MenuItem1", "MenuItem", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Playground.Data.EntityModels.EFMenuItem), "MenuSubItem", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Playground.Data.EntityModels.EFMenuSubItem), true)]
+[assembly: EdmRelationshipAttribute("PlaygroundModel", "FK_MenuItem_MenuGroups", "MenuGroup", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Playground.Data.EntityModels.EFMenuGroup), "MenuItem", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Playground.Data.EntityModels.EFMenuItem), true)]
 
 #endregion
 
@@ -74,76 +74,76 @@ namespace Playground.Data.EntityModels
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<MenuItem> MenuItems
+        public ObjectSet<EFMenuItem> EFMenuItems
         {
             get
             {
-                if ((_MenuItems == null))
+                if ((_EFMenuItems == null))
                 {
-                    _MenuItems = base.CreateObjectSet<MenuItem>("MenuItems");
+                    _EFMenuItems = base.CreateObjectSet<EFMenuItem>("EFMenuItems");
                 }
-                return _MenuItems;
+                return _EFMenuItems;
             }
         }
-        private ObjectSet<MenuItem> _MenuItems;
+        private ObjectSet<EFMenuItem> _EFMenuItems;
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<MenuSubItem> MenuSubItems
+        public ObjectSet<EFMenuSubItem> EFMenuSubItems
         {
             get
             {
-                if ((_MenuSubItems == null))
+                if ((_EFMenuSubItems == null))
                 {
-                    _MenuSubItems = base.CreateObjectSet<MenuSubItem>("MenuSubItems");
+                    _EFMenuSubItems = base.CreateObjectSet<EFMenuSubItem>("EFMenuSubItems");
                 }
-                return _MenuSubItems;
+                return _EFMenuSubItems;
             }
         }
-        private ObjectSet<MenuSubItem> _MenuSubItems;
+        private ObjectSet<EFMenuSubItem> _EFMenuSubItems;
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<MenuGroup> MenuGroups
+        public ObjectSet<EFMenuGroup> EFMenuGroups
         {
             get
             {
-                if ((_MenuGroups == null))
+                if ((_EFMenuGroups == null))
                 {
-                    _MenuGroups = base.CreateObjectSet<MenuGroup>("MenuGroups");
+                    _EFMenuGroups = base.CreateObjectSet<EFMenuGroup>("EFMenuGroups");
                 }
-                return _MenuGroups;
+                return _EFMenuGroups;
             }
         }
-        private ObjectSet<MenuGroup> _MenuGroups;
+        private ObjectSet<EFMenuGroup> _EFMenuGroups;
 
         #endregion
         #region AddTo Methods
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the MenuItems EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// Deprecated Method for adding a new object to the EFMenuItems EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddToMenuItems(MenuItem menuItem)
+        public void AddToEFMenuItems(EFMenuItem eFMenuItem)
         {
-            base.AddObject("MenuItems", menuItem);
+            base.AddObject("EFMenuItems", eFMenuItem);
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the MenuSubItems EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// Deprecated Method for adding a new object to the EFMenuSubItems EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddToMenuSubItems(MenuSubItem menuSubItem)
+        public void AddToEFMenuSubItems(EFMenuSubItem eFMenuSubItem)
         {
-            base.AddObject("MenuSubItems", menuSubItem);
+            base.AddObject("EFMenuSubItems", eFMenuSubItem);
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the MenuGroups EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// Deprecated Method for adding a new object to the EFMenuGroups EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddToMenuGroups(MenuGroup menuGroup)
+        public void AddToEFMenuGroups(EFMenuGroup eFMenuGroup)
         {
-            base.AddObject("MenuGroups", menuGroup);
+            base.AddObject("EFMenuGroups", eFMenuGroup);
         }
 
         #endregion
@@ -157,24 +157,24 @@ namespace Playground.Data.EntityModels
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="PlaygroundModel", Name="MenuGroup")]
+    [EdmEntityTypeAttribute(NamespaceName="PlaygroundModel", Name="EFMenuGroup")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
-    public partial class MenuGroup : EntityObject
+    public partial class EFMenuGroup : EntityObject
     {
         #region Factory Method
     
         /// <summary>
-        /// Create a new MenuGroup object.
+        /// Create a new EFMenuGroup object.
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="groupName">Initial value of the GroupName property.</param>
-        public static MenuGroup CreateMenuGroup(global::System.Int32 id, global::System.String groupName)
+        public static EFMenuGroup CreateEFMenuGroup(global::System.Int32 id, global::System.String groupName)
         {
-            MenuGroup menuGroup = new MenuGroup();
-            menuGroup.Id = id;
-            menuGroup.GroupName = groupName;
-            return menuGroup;
+            EFMenuGroup eFMenuGroup = new EFMenuGroup();
+            eFMenuGroup.Id = id;
+            eFMenuGroup.GroupName = groupName;
+            return eFMenuGroup;
         }
 
         #endregion
@@ -266,17 +266,17 @@ namespace Playground.Data.EntityModels
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("PlaygroundModel", "FK_MenuItem_MenuGroups", "MenuItem")]
-        public EntityCollection<MenuItem> MenuItems
+        public EntityCollection<EFMenuItem> MenuItems
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<MenuItem>("PlaygroundModel.FK_MenuItem_MenuGroups", "MenuItem");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<EFMenuItem>("PlaygroundModel.FK_MenuItem_MenuGroups", "MenuItem");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<MenuItem>("PlaygroundModel.FK_MenuItem_MenuGroups", "MenuItem", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<EFMenuItem>("PlaygroundModel.FK_MenuItem_MenuGroups", "MenuItem", value);
                 }
             }
         }
@@ -287,24 +287,24 @@ namespace Playground.Data.EntityModels
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="PlaygroundModel", Name="MenuItem")]
+    [EdmEntityTypeAttribute(NamespaceName="PlaygroundModel", Name="EFMenuItem")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
-    public partial class MenuItem : EntityObject
+    public partial class EFMenuItem : EntityObject
     {
         #region Factory Method
     
         /// <summary>
-        /// Create a new MenuItem object.
+        /// Create a new EFMenuItem object.
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="name">Initial value of the Name property.</param>
-        public static MenuItem CreateMenuItem(global::System.Int32 id, global::System.String name)
+        public static EFMenuItem CreateEFMenuItem(global::System.Int32 id, global::System.String name)
         {
-            MenuItem menuItem = new MenuItem();
-            menuItem.Id = id;
-            menuItem.Name = name;
-            return menuItem;
+            EFMenuItem eFMenuItem = new EFMenuItem();
+            eFMenuItem.Id = id;
+            eFMenuItem.Name = name;
+            return eFMenuItem;
         }
 
         #endregion
@@ -420,17 +420,17 @@ namespace Playground.Data.EntityModels
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("PlaygroundModel", "FK_MenuSubItem_MenuItem1", "MenuSubItem")]
-        public EntityCollection<MenuSubItem> MenuSubItems
+        public EntityCollection<EFMenuSubItem> MenuSubItems
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<MenuSubItem>("PlaygroundModel.FK_MenuSubItem_MenuItem1", "MenuSubItem");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<EFMenuSubItem>("PlaygroundModel.FK_MenuSubItem_MenuItem1", "MenuSubItem");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<MenuSubItem>("PlaygroundModel.FK_MenuSubItem_MenuItem1", "MenuSubItem", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<EFMenuSubItem>("PlaygroundModel.FK_MenuSubItem_MenuItem1", "MenuSubItem", value);
                 }
             }
         }
@@ -442,15 +442,15 @@ namespace Playground.Data.EntityModels
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("PlaygroundModel", "FK_MenuItem_MenuGroups", "MenuGroup")]
-        public MenuGroup ItemMenuGroup
+        public EFMenuGroup ItemMenuGroup
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<MenuGroup>("PlaygroundModel.FK_MenuItem_MenuGroups", "MenuGroup").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<EFMenuGroup>("PlaygroundModel.FK_MenuItem_MenuGroups", "MenuGroup").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<MenuGroup>("PlaygroundModel.FK_MenuItem_MenuGroups", "MenuGroup").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<EFMenuGroup>("PlaygroundModel.FK_MenuItem_MenuGroups", "MenuGroup").Value = value;
             }
         }
         /// <summary>
@@ -458,17 +458,17 @@ namespace Playground.Data.EntityModels
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<MenuGroup> ItemMenuGroupReference
+        public EntityReference<EFMenuGroup> ItemMenuGroupReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<MenuGroup>("PlaygroundModel.FK_MenuItem_MenuGroups", "MenuGroup");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<EFMenuGroup>("PlaygroundModel.FK_MenuItem_MenuGroups", "MenuGroup");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<MenuGroup>("PlaygroundModel.FK_MenuItem_MenuGroups", "MenuGroup", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<EFMenuGroup>("PlaygroundModel.FK_MenuItem_MenuGroups", "MenuGroup", value);
                 }
             }
         }
@@ -479,26 +479,26 @@ namespace Playground.Data.EntityModels
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="PlaygroundModel", Name="MenuSubItem")]
+    [EdmEntityTypeAttribute(NamespaceName="PlaygroundModel", Name="EFMenuSubItem")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
-    public partial class MenuSubItem : EntityObject
+    public partial class EFMenuSubItem : EntityObject
     {
         #region Factory Method
     
         /// <summary>
-        /// Create a new MenuSubItem object.
+        /// Create a new EFMenuSubItem object.
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="name">Initial value of the Name property.</param>
         /// <param name="parentId">Initial value of the ParentId property.</param>
-        public static MenuSubItem CreateMenuSubItem(global::System.Int32 id, global::System.String name, global::System.Int32 parentId)
+        public static EFMenuSubItem CreateEFMenuSubItem(global::System.Int32 id, global::System.String name, global::System.Int32 parentId)
         {
-            MenuSubItem menuSubItem = new MenuSubItem();
-            menuSubItem.Id = id;
-            menuSubItem.Name = name;
-            menuSubItem.ParentId = parentId;
-            return menuSubItem;
+            EFMenuSubItem eFMenuSubItem = new EFMenuSubItem();
+            eFMenuSubItem.Id = id;
+            eFMenuSubItem.Name = name;
+            eFMenuSubItem.ParentId = parentId;
+            return eFMenuSubItem;
         }
 
         #endregion
@@ -614,15 +614,15 @@ namespace Playground.Data.EntityModels
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("PlaygroundModel", "FK_MenuSubItem_MenuItem1", "MenuItem")]
-        public MenuItem MenuItem
+        public EFMenuItem MenuItem
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<MenuItem>("PlaygroundModel.FK_MenuSubItem_MenuItem1", "MenuItem").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<EFMenuItem>("PlaygroundModel.FK_MenuSubItem_MenuItem1", "MenuItem").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<MenuItem>("PlaygroundModel.FK_MenuSubItem_MenuItem1", "MenuItem").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<EFMenuItem>("PlaygroundModel.FK_MenuSubItem_MenuItem1", "MenuItem").Value = value;
             }
         }
         /// <summary>
@@ -630,17 +630,17 @@ namespace Playground.Data.EntityModels
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<MenuItem> MenuItemReference
+        public EntityReference<EFMenuItem> MenuItemReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<MenuItem>("PlaygroundModel.FK_MenuSubItem_MenuItem1", "MenuItem");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<EFMenuItem>("PlaygroundModel.FK_MenuSubItem_MenuItem1", "MenuItem");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<MenuItem>("PlaygroundModel.FK_MenuSubItem_MenuItem1", "MenuItem", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<EFMenuItem>("PlaygroundModel.FK_MenuSubItem_MenuItem1", "MenuItem", value);
                 }
             }
         }

@@ -61,15 +61,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Concrete\Domain\Layout\Menu.cs" />
-    <Compile Include="Concrete\Domain\Layout\MenuItem.cs" />
-    <Compile Include="Concrete\Domain\Repository\HeaderRepository.cs" />
-    <Compile Include="Concrete\Domain\Repository\LayoutRepository.cs" />
+    <Compile Include="Concrete\Repositories\HeaderRepository.cs" />
+    <Compile Include="Concrete\Repositories\LayoutRepository.cs" />
     <Compile Include="EntityModels\Playground.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Playground.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Mappers\LayoutRepositoryMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

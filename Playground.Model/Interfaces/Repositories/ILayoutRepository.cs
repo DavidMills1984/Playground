@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Playground.Model.Concrete;
 
 namespace Playground.Model.Interfaces
 {
     public interface ILayoutRepository
     {
-        IMenu UserSideMenu { get; }
-        IMenu AdminSideMenu { get; }
+        List<MenuItem> GetMenuData(string menuGroup);
     }
 }

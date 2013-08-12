@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Playground.WebUI.Models;
 using Playground.Model.Interfaces;
 
 namespace Playground.WebUI.Controllers

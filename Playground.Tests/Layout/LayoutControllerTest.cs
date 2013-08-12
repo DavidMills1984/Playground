@@ -8,7 +8,7 @@ using Moq;
 using Playground.Model.Interfaces;
 using Playground.Data.Concrete;
 using Playground.WebUI.Controllers;
-using Playground.WebUI.Models;
+using Playground.Model.Concrete;
 
 namespace Playground.Tests
 {
@@ -24,7 +24,7 @@ namespace Playground.Tests
 
 
         private TestContext testContextInstance;
-        private ILayoutRepository repository;
+        private ILayoutService _LayoutService;
 
         /// <summary>
         ///Gets or sets the test context which provides
@@ -43,31 +43,17 @@ namespace Playground.Tests
         }
 
         #region Additional test attributes
-        // 
-        //You can use the following additional attributes as you write your tests:
-        //
-        //Use ClassInitialize to run code before running the first test in the class
-        //[ClassInitialize()]
-        //public static void MyClassInitialize(TestContext testContext)
-        //{
-        //}
-        //
-        //Use ClassCleanup to run code after all tests in a class have run
-        //[ClassCleanup()]
-        //public static void MyClassCleanup()
-        //{
-        //}
-        //
+
         //Use TestInitialize to run code before running each test
         [TestInitialize()]
         public void MyTestInitialize()
         {
             //Setup and return a Mocked layout model for testing
 
-            Mock<ILayoutRepository> mockedRepository = new Mock<ILayoutRepository>();
-            Mock<IMenu> mockedMenu = new Mock<IMenu>();
-            Mock<IMenuItem> mockedMenuItem = new Mock<IMenuItem>();
-            Mock<IMenuItem> mockedSubMenuItem = new Mock<IMenuItem>();
+            Mock<ILayoutService> mockedService = new Mock<ILayoutService>();
+            Mock<Menu> mockedMenu = new Mock<Menu>();
+            Mock<MenuItem> mockedMenuItem = new Mock<MenuItem>();
+            Mock<MenuItem> mockedSubMenuItem = new Mock<MenuItem>();
 
             //Setup mock sub menu item
             mockedSubMenuItem.Setup(m => m.Action).Returns("TestSubRef");
@@ -76,20 +62,20 @@ namespace Playground.Tests
             //Setup mock menu item
             mockedMenuItem.Setup(m => m.Action).Returns("TestRef");
             mockedMenuItem.Setup(m => m.Title).Returns("TestTitle");
-            mockedMenuItem.Setup(m => m.SubItems).Returns(new List<IMenuItem>() {
+            mockedMenuItem.Setup(m => m.SubItems).Returns(new List<MenuItem>() {
                     mockedSubMenuItem.Object
                 });
 
             //Seup mock menu
-            mockedMenu.Setup(m => m.Items).Returns(new List<IMenuItem>() {
+            mockedMenu.Setup(m => m.Items).Returns(new List<MenuItem>() {
                     mockedMenuItem.Object
                 });
 
-            mockedRepository.Setup(m => m.UserSideMenu).Returns(mockedMenu.Object);
+            //Use mock menu to populate new Layout service
+            mockedService.Setup(m => m.GetMenu(It.IsAny<string>()))
+                .Returns<string>(x => mockedMenu.Object);
 
-            //Use mock menu to populate new Layout model
-
-            this.repository = mockedRepository.Object;
+            _LayoutService = mockedService.Object;
         }
         
         //Use TestCleanup to run code after each test has run
@@ -99,7 +85,6 @@ namespace Playground.Tests
         //}
         //
         #endregion
-
 
         /// <summary>
         ///A test for LayoutController Constructor
@@ -114,15 +99,15 @@ namespace Playground.Tests
             //Layout model has already been created in unit test initilisation
 
             //Act
-            NavController mockController = new NavController(repository);
+            NavController mockController = new NavController(_LayoutService);
 
-            List<IMenuItem> result = (List<IMenuItem>)mockController.Home().Model;
+            List<MenuItem> result = ((Menu)mockController.Home().Model).Items;
 
             //Assert
 
             //Do we have a menu item?
             Assert.IsTrue(result.Any());
-            IMenuItem menuItem = result.First();
+            MenuItem menuItem = result.First();
 
             //Is it the correct menu item?
             Assert.AreEqual(menuItem.Action, "TestRef");
@@ -130,7 +115,7 @@ namespace Playground.Tests
 
             //Do we have a sub item?
             Assert.IsTrue(menuItem.SubItems.Any());
-            IMenuItem subMenuItem = menuItem.SubItems.First();
+            MenuItem subMenuItem = menuItem.SubItems.First();
 
             //Is it the correct menu item?
 

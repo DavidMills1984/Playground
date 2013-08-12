@@ -43,10 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Concrete\Domain\Layout\Menu.cs" />
+    <Compile Include="Concrete\Domain\Layout\MenuItem.cs" />
     <Compile Include="Interfaces\Repositories\IHeaderRepository.cs" />
     <Compile Include="Interfaces\Repositories\ILayoutRepository.cs" />
-    <Compile Include="Interfaces\Domain\Layout\IMenu.cs" />
-    <Compile Include="Interfaces\Domain\Layout\IMenuItem.cs" />
+    <Compile Include="Interfaces\Services\ILayoutService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

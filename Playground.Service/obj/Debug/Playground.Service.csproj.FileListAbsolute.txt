@@ -1,5 +1,10 @@
 C:\inetpub\wwwroot\Playground\Playground.Service\bin\Debug\Playground.Service.dll
 C:\inetpub\wwwroot\Playground\Playground.Service\bin\Debug\Playground.Service.pdb
+C:\inetpub\wwwroot\Playground\Playground.Service\bin\Debug\Ninject.dll
+C:\inetpub\wwwroot\Playground\Playground.Service\bin\Debug\Playground.Model.dll
+C:\inetpub\wwwroot\Playground\Playground.Service\bin\Debug\Playground.Model.pdb
+C:\inetpub\wwwroot\Playground\Playground.Service\bin\Debug\Ninject.pdb
+C:\inetpub\wwwroot\Playground\Playground.Service\bin\Debug\Ninject.xml
 C:\inetpub\wwwroot\Playground\Playground.Service\obj\Debug\ResolveAssemblyReference.cache
 C:\inetpub\wwwroot\Playground\Playground.Service\obj\Debug\Playground.Service.dll
 C:\inetpub\wwwroot\Playground\Playground.Service\obj\Debug\Playground.Service.pdb

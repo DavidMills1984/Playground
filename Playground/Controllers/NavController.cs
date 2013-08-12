@@ -4,31 +4,45 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Playground.Model.Interfaces;
-using Playground.WebUI.Models.Concrete;
+using Playground.Model.Concrete;
+
 
 namespace Playground.WebUI.Controllers
 {
     public class NavController : BaseController
     {
-        private ILayoutRepository repository;
+        private ILayoutService _LayoutService;
 
-        public NavController(ILayoutRepository repo)
+        /// <summary>
+        /// Contructor for a controller which defines logic to be used and views to
+        /// return to user for all navigation operations
+        /// </summary>
+        /// <param name="layoutService"></param>
+        public NavController(ILayoutService layoutService)
         {
-            repository = repo;
+            _LayoutService = layoutService;
         }
 
+        /// <summary>
+        /// Returns a partial view containing menu items needed for the users side menu
+        /// </summary>
+        /// <returns></returns>
         public PartialViewResult Home()
         {
-            MenuViewModel menuItems = new MenuViewModel(repository.UserSideMenu);
+            Menu menu = _LayoutService.GetMenu("UserSideMenu");
 
-            return PartialView("Menu", menuItems);
+            return PartialView("Menu", menu);
         }
-
+        
+        /// <summary>
+        /// Returns a partial view containing menu items needed for the admin menu
+        /// </summary>
+        /// <returns></returns>
         public PartialViewResult Admin()
         {
-            MenuViewModel menuItems = new MenuViewModel(repository.AdminSideMenu);
+            Menu menu = _LayoutService.GetMenu("AdminSideMenu");
 
-            return PartialView("Menu", menuItems);
+            return PartialView("Menu", menu);
         }
     }
 }
