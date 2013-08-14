@@ -10,7 +10,7 @@ using Playground.Data.Concrete;
 using Playground.WebUI.Controllers;
 using Playground.Model.Concrete;
 
-namespace Playground.Tests
+namespace Playground.Tests.Layout
 {
     
     /// <summary>

@@ -12,7 +12,7 @@ namespace Playground.Data.Concrete
 {
     public class LayoutRepository : ILayoutRepository
     {
-        public List<MenuItem> GetMenuData(string menuGroup)
+        public virtual List<MenuItem> GetMenuData(string menuGroup)
         {
             List<MenuItem> items = new List<MenuItem>();
 

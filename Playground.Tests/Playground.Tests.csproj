@@ -110,6 +110,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Layout\LayoutServiceTest.cs" />
     <Compile Include="Layout\LayoutRepositoryMapperTest.cs" />
     <Compile Include="Layout\LayoutControllerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -128,6 +129,10 @@
     <ProjectReference Include="..\Playground.Model\Playground.Model.csproj">
       <Project>{ED84C4BE-C4E9-4B0F-8570-1DFE9695303A}</Project>
       <Name>Playground.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Playground.Service\Playground.Service.csproj">
+      <Project>{11C9FF33-D301-4D55-89E5-002DE7DC137C}</Project>
+      <Name>Playground.Service</Name>
     </ProjectReference>
     <ProjectReference Include="..\Playground\Playground.WebUI.csproj">
       <Project>{55C98087-8A21-4963-822E-CFB7BB5B7CEE}</Project>

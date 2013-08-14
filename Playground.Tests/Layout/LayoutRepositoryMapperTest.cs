@@ -8,7 +8,7 @@ using Moq;
 using System.Data.Objects.DataClasses;
 using System.Linq;
 
-namespace Playground.Tests
+namespace Playground.Tests.Layout
 {
     
     
